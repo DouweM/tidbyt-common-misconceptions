@@ -1,15 +1,18 @@
 import json
 import re
 import random
+import tempfile
 
 import pywikibot
 import wikitextparser as wtp
 
 PAGE = 'List_of_common_misconceptions'
 
-site = pywikibot.Site('en', 'wikipedia')
-page = pywikibot.Page(site, PAGE)
-text = page.text
+with tempfile.TemporaryDirectory() as path:
+    pywikibot.config.base_dir = path
+    site = pywikibot.Site('en', 'wikipedia')
+    page = pywikibot.Page(site, PAGE)
+    text = page.text
 
 def remove_markup(text):
     text = wtp.remove_markup(text, replace_tags=False)
