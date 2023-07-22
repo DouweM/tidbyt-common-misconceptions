@@ -15,7 +15,7 @@ jobs:
         run: |
           export PIXLET_VERSION=$(curl https://raw.githubusercontent.com/tidbyt/community/main/PIXLET_VERSION | sed 's/v//')
           echo $PIXLET_VERSION
-          curl -L -o pixlet.tar.gz https://github.com/tidbyt/pixlet/releases/download/v${PIXLET_VERSION}/pixlet_${PIXLET_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz
+          curl -L -o pixlet.tar.gz https://github.com/tidbyt/pixlet/releases/download/v${PIXLET_VERSION}/pixlet_${PIXLET_VERSION}_linux_amd64.tar.gz
           tar -xvf pixlet.tar.gz
           chmod +x ./pixlet
           mv pixlet /usr/local/bin/pixlet
