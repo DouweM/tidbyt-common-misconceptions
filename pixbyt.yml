@@ -1,0 +1,15 @@
+jobs:
+- name: common-misconceptions
+  tasks:
+  - tap-pixlet--common-misconceptions target-tidbyt
+- name: common-misconceptions--webp
+  tasks:
+  - tap-pixlet--common-misconceptions target-webp
+
+plugins:
+  extractors:
+  - name: tap-pixlet--common-misconceptions
+    inherit_from: tap-pixlet
+    pip_url: git+https://github.com/DouweM/tap-pixlet.git -r apps/common-misconceptions/requirements.txt
+    config:
+      path: apps/common-misconceptions
