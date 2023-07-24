@@ -30,9 +30,11 @@ jobs:
       - name: Render app to image
         env:
           TAP_PIXLET_MAGNIFICATION: "8"
-        run: meltano run webp
+        run: |
+          meltano run webp
+          mv output/**/*.webp output/image.webp
       - name: Store image
         uses: actions/upload-artifact@v3
         with:
           name: image
-          path: output/**/*.webp
+          path: output/image.webp
