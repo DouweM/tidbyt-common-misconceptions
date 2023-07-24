@@ -16,7 +16,9 @@ with tempfile.TemporaryDirectory() as path:
 
 def remove_markup(text):
     text = wtp.remove_markup(text, replace_tags=False)
-    return re.sub(r'<ref.*?>.*?</ref>', '', text, flags=re.DOTALL).strip()
+    text = re.sub(r'<ref.*?>.*?</ref>', '', text, flags=re.DOTALL)
+    text = re.sub(r'<ref.*?/>', '', text, flags=re.DOTALL)
+    return text.strip()
 
 parsed = wtp.parse(text)
 
